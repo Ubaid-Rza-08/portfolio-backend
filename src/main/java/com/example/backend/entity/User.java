@@ -25,8 +25,8 @@ public class User {
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 
-    @Column(name = "profile_image")
-    private byte[] profileImage;
+    @Column(name = "profile_image_url")
+    private String profileImageUrl;
 
     @Column(name = "location")
     private String location;
@@ -73,26 +73,26 @@ public class User {
     @Column(name = "service_description", columnDefinition = "TEXT")
     private String serviceDescription;
 
-    @Column(name = "image1")
-    private byte[] image1;
+    @Column(name = "image1_url")
+    private String image1Url;
 
     @Column(name = "description1", columnDefinition = "TEXT")
     private String description1;
 
-    @Column(name = "image2")
-    private byte[] image2;
+    @Column(name = "image2_url")
+    private String image2Url;
 
     @Column(name = "description2", columnDefinition = "TEXT")
     private String description2;
 
-    @Column(name = "image3")
-    private byte[] image3;
+    @Column(name = "image3_url")
+    private String image3Url;
 
     @Column(name = "description3", columnDefinition = "TEXT")
     private String description3;
 
-    @Column(name = "image4")
-    private byte[] image4;
+    @Column(name = "image4_url")
+    private String image4Url;
 
     @Column(name = "description4", columnDefinition = "TEXT")
     private String description4;
@@ -140,12 +140,12 @@ public class User {
         this.description = description;
     }
 
-    public byte[] getProfileImage() {
-        return profileImage;
+    public String getProfileImageUrl() {
+        return profileImageUrl;
     }
 
-    public void setProfileImage(byte[] profileImage) {
-        this.profileImage = profileImage;
+    public void setProfileImageUrl(String profileImageUrl) {
+        this.profileImageUrl = profileImageUrl;
     }
 
     public String getLocation() {
@@ -268,12 +268,12 @@ public class User {
         this.serviceDescription = serviceDescription;
     }
 
-    public byte[] getImage1() {
-        return image1;
+    public String getImage1Url() {
+        return image1Url;
     }
 
-    public void setImage1(byte[] image1) {
-        this.image1 = image1;
+    public void setImage1Url(String image1Url) {
+        this.image1Url = image1Url;
     }
 
     public String getDescription1() {
@@ -284,12 +284,12 @@ public class User {
         this.description1 = description1;
     }
 
-    public byte[] getImage2() {
-        return image2;
+    public String getImage2Url() {
+        return image2Url;
     }
 
-    public void setImage2(byte[] image2) {
-        this.image2 = image2;
+    public void setImage2Url(String image2Url) {
+        this.image2Url = image2Url;
     }
 
     public String getDescription2() {
@@ -300,12 +300,12 @@ public class User {
         this.description2 = description2;
     }
 
-    public byte[] getImage3() {
-        return image3;
+    public String getImage3Url() {
+        return image3Url;
     }
 
-    public void setImage3(byte[] image3) {
-        this.image3 = image3;
+    public void setImage3Url(String image3Url) {
+        this.image3Url = image3Url;
     }
 
     public String getDescription3() {
@@ -316,12 +316,12 @@ public class User {
         this.description3 = description3;
     }
 
-    public byte[] getImage4() {
-        return image4;
+    public String getImage4Url() {
+        return image4Url;
     }
 
-    public void setImage4(byte[] image4) {
-        this.image4 = image4;
+    public void setImage4Url(String image4Url) {
+        this.image4Url = image4Url;
     }
 
     public String getDescription4() {
