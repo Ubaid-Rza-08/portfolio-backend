@@ -1,0 +1,3022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-50: #eff6ff;
+            --primary-100: #dbeafe;
+            --primary-500: #3b82f6;
+            --primary-600: #2563eb;
+            --primary-700: #1d4ed8;
+            --primary-900: #1e3a8a;
+            --gray-50: #f9fafb;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-300: #d1d5db;
+            --gray-400: #9ca3af;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --gray-800: #1f2937;
+            --gray-900: #111827;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+            --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+            --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+            --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            background: var(--gray-50);
+            color: var(--gray-700);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Enhanced Loading & Error States */
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 300px;
+            gap: 1rem;
+        }
+
+        .professional-spinner {
+            width: 50px;
+            height: 50px;
+            position: relative;
+        }
+
+        .professional-spinner::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 3px solid var(--gray-200);
+            border-top: 3px solid var(--primary-500);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .professional-spinner::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            width: calc(100% - 12px);
+            height: calc(100% - 12px);
+            border: 2px solid transparent;
+            border-top: 2px solid var(--primary-300);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite reverse;
+        }
+
+        .loading-text {
+            color: var(--gray-600);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .error-container {
+            background: linear-gradient(135deg, var(--error), #dc2626);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            text-align: center;
+            margin: 2rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .error-container h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .error-container p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Professional Selection Screen */
+        .selection-screen {
+            min-height: 100vh;
+            background: linear-gradient(135deg, var(--primary-600) 0%, var(--primary-900) 100%);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .selection-screen::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="1.5"/></g></svg>');
+            opacity: 0.3;
+        }
+
+        .selection-container {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            padding: 3.5rem;
+            box-shadow: var(--shadow-2xl);
+            max-width: 1400px;
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .selection-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .selection-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-600), var(--primary-900));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
+        }
+
+        .selection-subtitle {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            font-weight: 400;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Enhanced User Selection */
+        .selection-section {
+            margin-bottom: 4rem;
+        }
+
+        .section-label {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-label::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            border-radius: 2px;
+        }
+
+        .user-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .user-card {
+            background: white;
+            border: 2px solid var(--gray-100);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .user-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 0;
+        }
+
+        .user-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .user-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--primary-300);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .user-card:hover::before {
+            opacity: 0.03;
+        }
+
+        .user-card.selected {
+            background: linear-gradient(135deg, var(--primary-50), var(--primary-100));
+            border-color: var(--primary-500);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
+        }
+
+        .user-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 4px solid var(--gray-100);
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-md);
+        }
+
+        .user-card:hover .user-avatar {
+            border-color: var(--primary-200);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .user-card.selected .user-avatar {
+            border-color: var(--primary-500);
+        }
+
+        .user-name {
+            font-size: 1.375rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.01em;
+        }
+
+        .user-title {
+            color: var(--gray-600);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .user-experience {
+            background: var(--gray-50);
+            color: var(--gray-700);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 1rem;
+            display: inline-block;
+        }
+
+        .user-card.selected .user-experience {
+            background: var(--primary-100);
+            color: var(--primary-700);
+        }
+
+        /* Enhanced Template Selection */
+        .template-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .template-card {
+            background: white;
+            border: 2px solid var(--gray-100);
+            border-radius: 20px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+        }
+
+        .template-card:hover {
+            border-color: var(--primary-300);
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .template-card.selected {
+            background: linear-gradient(135deg, var(--primary-50), var(--primary-100));
+            border-color: var(--primary-500);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .template-preview {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--gray-100), var(--gray-200));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .template-preview.modern {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .template-preview.classic {
+            background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+        }
+
+        .template-preview.executive {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+        }
+
+        .template-preview::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="40" height="40" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.1"><circle cx="20" cy="20" r="1"/></g></svg>');
+            opacity: 0.5;
+        }
+
+        .template-content {
+            padding: 2rem;
+        }
+
+        .template-name {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gray-900);
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
+        }
+
+        .template-description {
+            color: var(--gray-600);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .template-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .feature-tag {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 0.375rem 0.875rem;
+            border-radius: 12px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+        }
+
+        .template-card.selected .feature-tag {
+            background: var(--primary-100);
+            color: var(--primary-700);
+        }
+
+        /* Professional Continue Button */
+        .continue-section {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .continue-btn {
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            color: white;
+            border: none;
+            padding: 1.25rem 3rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            position: relative;
+            overflow: hidden;
+            opacity: 0.4;
+            pointer-events: none;
+            box-shadow: var(--shadow);
+        }
+
+        .continue-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .continue-btn.active {
+            opacity: 1;
+            pointer-events: auto;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .continue-btn.active:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .continue-btn.active:hover::before {
+            left: 100%;
+        }
+
+        .continue-btn.loading {
+            pointer-events: none;
+        }
+
+        .continue-btn.loading .btn-text {
+            opacity: 0;
+        }
+
+        .continue-btn.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        /* Enhanced Back Button */
+        .back-button {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--gray-200);
+            color: var(--gray-700);
+            padding: 14px 24px;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1001;
+            display: none;
+            align-items: center;
+            gap: 10px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .back-button:hover {
+            background: white;
+            transform: translateX(-4px);
+            box-shadow: var(--shadow-xl);
+            border-color: var(--primary-200);
+            color: var(--primary-600);
+        }
+
+        .back-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .back-button:hover .back-arrow {
+            transform: translateX(-2px);
+        }
+
+        /* Modern Template Styles */
+        .template-modern {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .template-modern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.05"><circle cx="30" cy="30" r="1.5"/></g></svg>');
+            pointer-events: none;
+        }
+
+        .modern-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+        }
+
+        .modern-header.scrolled {
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: var(--shadow);
+        }
+
+        .modern-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .modern-logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--primary-600), var(--primary-900));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .modern-nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .modern-nav-link {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            letter-spacing: -0.01em;
+        }
+
+        .modern-nav-link:hover,
+        .modern-nav-link.active {
+            color: var(--primary-600);
+        }
+
+        .modern-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .modern-nav-link:hover::after,
+        .modern-nav-link.active::after {
+            width: 100%;
+        }
+
+        .modern-hero {
+            padding: 12rem 0 6rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .modern-hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .modern-profile-image {
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 2.5rem;
+            border: 6px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .modern-profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 35px 70px rgba(0, 0, 0, 0.4);
+        }
+
+        .modern-hero h1 {
+            font-size: 4.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .modern-hero-subtitle {
+            font-size: 1.875rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+        }
+
+        .modern-hero-description {
+            font-size: 1.375rem;
+            max-width: 700px;
+            margin: 0 auto 3.5rem;
+            opacity: 0.85;
+            line-height: 1.7;
+            font-weight: 400;
+        }
+
+        .modern-hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .modern-btn {
+            padding: 1.25rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modern-btn-primary {
+            background: rgba(255, 255, 255, 0.95);
+            color: var(--primary-700);
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .modern-btn-primary:hover {
+            background: white;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .modern-btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+
+        .modern-btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Classic Template Styles */
+        .template-classic {
+            background: white;
+            color: var(--gray-700);
+            min-height: 100vh;
+        }
+
+        .classic-header {
+            background: var(--gray-900);
+            color: white;
+            padding: 1.25rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .classic-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .classic-logo {
+            font-size: 1.75rem;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+        }
+
+        .classic-nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .classic-nav-link {
+            color: var(--gray-300);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            letter-spacing: -0.01em;
+        }
+
+        .classic-nav-link:hover,
+        .classic-nav-link.active {
+            color: var(--primary-400);
+        }
+
+        .classic-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary-500);
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .classic-nav-link:hover::after,
+        .classic-nav-link.active::after {
+            width: 100%;
+        }
+
+        .classic-hero {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, var(--gray-50), var(--gray-100));
+            position: relative;
+        }
+
+        .classic-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%236b7280" fill-opacity="0.03"><circle cx="30" cy="30" r="1.5"/></g></svg>');
+            pointer-events: none;
+        }
+
+        .classic-hero-content {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .classic-hero h1 {
+            font-size: 3.75rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            color: var(--gray-900);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .classic-hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--primary-600);
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -0.01em;
+        }
+
+        .classic-hero-description {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+        }
+
+        .classic-hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .classic-btn {
+            padding: 1.25rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 1.125rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .classic-btn-primary {
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .classic-btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .classic-btn-secondary {
+            background: white;
+            color: var(--gray-700);
+            border: 2px solid var(--gray-200);
+            box-shadow: var(--shadow);
+        }
+
+        .classic-btn-secondary:hover {
+            background: var(--gray-50);
+            border-color: var(--primary-200);
+            color: var(--primary-700);
+            transform: translateY(-2px);
+        }
+
+        .classic-profile-image {
+            width: 100%;
+            height: 500px;
+            border-radius: 20px;
+            object-fit: cover;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.3s ease;
+        }
+
+        .classic-profile-image:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow-2xl);
+        }
+
+        /* Executive Template Styles */
+        .template-executive {
+            background: linear-gradient(135deg, var(--gray-900) 0%, #0f172a 100%);
+            color: white;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        .template-executive::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"><g fill="none" fill-rule="evenodd"><g fill="%23ffffff" fill-opacity="0.02"><circle cx="40" cy="40" r="2"/></g></svg>');
+            pointer-events: none;
+        }
+
+        .executive-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 1000;
+            padding: 1.25rem 0;
+        }
+
+        .executive-header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .executive-logo {
+            font-size: 1.875rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .executive-nav {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .executive-nav-link {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            position: relative;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            letter-spacing: -0.01em;
+        }
+
+        .executive-nav-link:hover,
+        .executive-nav-link.active {
+            color: #fbbf24;
+        }
+
+        .executive-nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .executive-nav-link:hover::after,
+        .executive-nav-link.active::after {
+            width: 100%;
+        }
+
+        /* Common Section Styles */
+        .section {
+            padding: 6rem 0;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .template-modern .section-title {
+            color: white;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .template-modern .section-subtitle {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .template-classic .section-title {
+            color: var(--gray-900);
+        }
+
+        .template-classic .section-subtitle {
+            color: var(--gray-600);
+        }
+
+        .template-executive .section-title {
+            color: white;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .template-executive .section-subtitle {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Enhanced Stats Section */
+        .stats-section {
+            position: relative;
+        }
+
+        .template-modern .stats-section {
+            background: rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        .template-classic .stats-section {
+            background: white;
+            border-top: 1px solid var(--gray-200);
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+        .template-executive .stats-section {
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .stat-item:hover::before {
+            opacity: 0.05;
+        }
+
+        .stat-item > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-8px);
+        }
+
+        .template-modern .stat-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .template-classic .stat-item {
+            background: var(--gray-50);
+            border: 1px solid var(--gray-100);
+            box-shadow: var(--shadow);
+        }
+
+        .template-classic .stat-item:hover {
+            background: white;
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-200);
+        }
+
+        .template-executive .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .stat-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            font-size: 1.75rem;
+            color: white;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .template-executive .stat-icon {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-label {
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 1rem;
+        }
+
+        .template-modern .stat-number,
+        .template-modern .stat-label {
+            color: white;
+        }
+
+        .template-classic .stat-number {
+            color: var(--primary-600);
+        }
+
+        .template-classic .stat-label {
+            color: var(--gray-700);
+        }
+
+        .template-executive .stat-number {
+            color: #fbbf24;
+        }
+
+        .template-executive .stat-label {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Enhanced About Section */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            align-items: start;
+        }
+
+        .about-content {
+            padding: 3rem;
+            border-radius: 24px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .about-content:hover::before {
+            opacity: 0.02;
+        }
+
+        .about-content > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .template-modern .about-content {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .template-classic .about-content {
+            background: white;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .template-executive .about-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .about-title {
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            letter-spacing: -0.02em;
+        }
+
+        .about-text {
+            font-size: 1.1875rem;
+            line-height: 1.8;
+            margin-bottom: 2.5rem;
+        }
+
+        .template-modern .about-title {
+            color: white;
+        }
+
+        .template-modern .about-text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .template-classic .about-title {
+            color: var(--gray-900);
+        }
+
+        .template-classic .about-text {
+            color: var(--gray-700);
+        }
+
+        .template-executive .about-title {
+            color: white;
+        }
+
+        .template-executive .about-text {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .contact-card {
+            padding: 3rem;
+            border-radius: 24px;
+            position: sticky;
+            top: 7rem;
+            backdrop-filter: blur(20px);
+        }
+
+        .template-modern .contact-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .template-classic .contact-card {
+            background: var(--gray-900);
+            color: white;
+            box-shadow: var(--shadow-xl);
+        }
+
+        .template-executive .contact-card {
+            background: rgba(251, 191, 36, 0.1);
+            border: 1px solid rgba(251, 191, 36, 0.2);
+        }
+
+        .contact-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 2.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .template-modern .contact-title {
+            color: white;
+        }
+
+        .template-executive .contact-title {
+            color: #fbbf24;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.5s;
+        }
+
+        .contact-item:hover::before {
+            left: 100%;
+        }
+
+        .contact-item:hover {
+            transform: translateX(8px);
+        }
+
+        .template-modern .contact-item {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .template-classic .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .template-executive .contact-item {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            font-size: 1.5rem;
+            color: white;
+            font-weight: 600;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .template-modern .contact-icon,
+        .template-classic .contact-icon {
+            background: linear-gradient(135deg, var(--primary-500), var(--primary-700));
+        }
+
+        .template-executive .contact-icon {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+
+        .contact-info h4 {
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+        }
+
+        .contact-info p,
+        .contact-info a {
+            font-size: 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .template-modern .contact-info h4 {
+            color: white;
+        }
+
+        .template-modern .contact-info p,
+        .template-modern .contact-info a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .template-modern .contact-info a:hover {
+            color: white;
+        }
+
+        .template-executive .contact-info h4 {
+            color: white;
+        }
+
+        .template-executive .contact-info p,
+        .template-executive .contact-info a {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .template-executive .contact-info a:hover {
+            color: #fbbf24;
+        }
+
+        /* Enhanced Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-item {
+            border-radius: 24px;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            group: hover;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-12px);
+        }
+
+        .template-modern .portfolio-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .template-modern .portfolio-item:hover {
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .template-classic .portfolio-item {
+            background: white;
+            border: 1px solid var(--gray-200);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .template-classic .portfolio-item:hover {
+            box-shadow: var(--shadow-2xl);
+            border-color: var(--primary-300);
+        }
+
+        .template-executive .portfolio-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+        }
+
+        .template-executive .portfolio-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.05);
+        }
+
+        .portfolio-content {
+            padding: 2.5rem;
+        }
+
+        .portfolio-title {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 1.25rem;
+            letter-spacing: -0.01em;
+        }
+
+        .portfolio-description {
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 1rem;
+        }
+
+        .template-modern .portfolio-title,
+        .template-modern .portfolio-description {
+            color: white;
+        }
+
+        .template-modern .portfolio-description {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .template-classic .portfolio-title {
+            color: var(--gray-900);
+        }
+
+        .template-classic .portfolio-description {
+            color: var(--gray-600);
+        }
+
+        .template-executive .portfolio-title {
+            color: white;
+        }
+
+        .template-executive .portfolio-description {
+            color: rgba(255, 255, 255, 0.85);
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+        }
+
+        .portfolio-tag {
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8125rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .template-modern .portfolio-tag {
+            background: rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .template-classic .portfolio-tag {
+            background: var(--primary-50);
+            color: var(--primary-700);
+        }
+
+        .template-executive .portfolio-tag {
+            background: rgba(251, 191, 36, 0.1);
+            color: #fbbf24;
+        }
+
+        /* Enhanced Footer */
+        .footer {
+            padding: 5rem 0 3rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .template-modern .footer {
+            background: rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(20px);
+        }
+
+        .template-classic .footer {
+            background: var(--gray-900);
+            color: white;
+        }
+
+        .template-executive .footer {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .footer-logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .template-modern .footer-logo {
+            color: white;
+        }
+
+        .template-executive .footer-logo {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-description {
+            font-size: 1.125rem;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .social-section {
+            margin-bottom: 3rem;
+        }
+
+        .social-title {
+            font-size: 1.375rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.875rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--primary-400), var(--primary-600));
+            transition: transform 0.3s ease;
+            z-index: 0;
+        }
+
+        .social-link > span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .template-executive .social-link::before {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: var(--shadow-xl);
+        }
+
+        .social-link:hover::before {
+            transform: scale(1.2);
+        }
+
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            font-size: 0.9375rem;
+            opacity: 0.7;
+        }
+
+        /* Mobile Responsive Enhancements */
+        @media (max-width: 1024px) {
+            .selection-title {
+                font-size: 2.5rem;
+            }
+
+            .user-grid,
+            .template-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 1.5rem;
+            }
+
+            .modern-hero h1,
+            .classic-hero h1 {
+                font-size: 3rem;
+            }
+
+            .classic-hero-content,
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 1rem;
+            }
+
+            .selection-container {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+
+            .selection-title {
+                font-size: 2rem;
+            }
+
+            .modern-nav,
+            .classic-nav,
+            .executive-nav {
+                display: none;
+            }
+
+            .modern-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .classic-hero h1 {
+                font-size: 2.25rem;
+            }
+
+            .section-title {
+                font-size: 2.25rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .stat-item {
+                padding: 2rem 1.5rem;
+            }
+
+            .about-content,
+            .contact-card {
+                padding: 2rem;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modern-hero-actions,
+            .classic-hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .modern-btn,
+            .classic-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .selection-container {
+                margin: 0.5rem;
+                padding: 1.5rem;
+            }
+
+            .user-grid,
+            .template-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modern-hero {
+                padding: 10rem 0 4rem;
+            }
+
+            .modern-hero h1 {
+                font-size: 2rem;
+            }
+
+            .classic-hero h1 {
+                font-size: 1.875rem;
+            }
+
+            .section-title {
+                font-size: 1.875rem;
+            }
+
+            .social-links {
+                gap: 1rem;
+            }
+
+            .social-link {
+                width: 50px;
+                height: 50px;
+                font-size: 0.8125rem;
+            }
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+<!-- Selection Screen -->
+<div id="selectionScreen" class="selection-screen">
+    <div class="selection-container">
+        <div class="selection-header">
+            <h1 class="selection-title">Executive Portfolio</h1>
+            <p class="selection-subtitle">Select a professional and choose your preferred executive template design</p>
+        </div>
+
+        <!-- User Selection -->
+        <div class="selection-section">
+            <h3 class="section-label">Choose Professional</h3>
+            <div class="user-grid" id="userGrid">
+                <div class="loading-container">
+                    <div class="professional-spinner"></div>
+                    <div class="loading-text">Loading professionals...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Template Selection -->
+        <div class="selection-section">
+            <h3 class="section-label">Choose Design Template</h3>
+            <div class="template-grid">
+                <div class="template-card" data-template="modern">
+                    <div class="template-preview modern">🎨</div>
+                    <div class="template-content">
+                        <div class="template-name">Modern Corporate</div>
+                        <div class="template-description">Contemporary gradient design with glassmorphism effects and modern typography</div>
+                        <div class="template-features">
+                            <span class="feature-tag">Gradient</span>
+                            <span class="feature-tag">Glass Effects</span>
+                            <span class="feature-tag">Creative</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-card" data-template="classic">
+                    <div class="template-preview classic">📋</div>
+                    <div class="template-content">
+                        <div class="template-name">Classic Professional</div>
+                        <div class="template-description">Traditional business layout with clean typography and structured sections</div>
+                        <div class="template-features">
+                            <span class="feature-tag">Clean</span>
+                            <span class="feature-tag">Traditional</span>
+                            <span class="feature-tag">Business</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="template-card" data-template="executive">
+                    <div class="template-preview executive">👔</div>
+                    <div class="template-content">
+                        <div class="template-name">Executive Premium</div>
+                        <div class="template-description">Luxury dark theme with gold accents for C-level executives and senior leaders</div>
+                        <div class="template-features">
+                            <span class="feature-tag">Luxury</span>
+                            <span class="feature-tag">Premium</span>
+                            <span class="feature-tag">Executive</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="continue-section">
+            <button class="continue-btn" id="continueBtn">
+                <span class="btn-text">Select Professional & Template</span>
+                <span>→</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Back Button -->
+<button class="back-button" id="backButton">
+    <span class="back-arrow">←</span>
+    <span>Back to Selection</span>
+</button>
+
+<!-- Portfolio Content -->
+<div id="portfolioContent" class="hidden">
+    <!-- Content will be dynamically loaded here -->
+</div>
+
+<script>
+    // API Configuration
+    const API_BASE_URL = 'http://localhost:8080/api/users';
+    let selectedUser = null;
+    let selectedTemplate = null;
+    let currentScrollY = 0;
+
+    // Initialize
+    document.addEventListener('DOMContentLoaded', function() {
+        loadUsers();
+        initializeEventListeners();
+        initializeScrollEffects();
+    });
+
+    // Enhanced loading of users from backend
+    async function loadUsers() {
+        try {
+            const response = await fetch(API_BASE_URL);
+            if (!response.ok) {
+                throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+            }
+            const users = await response.json();
+            displayUsers(users);
+        } catch (error) {
+            console.error('Error loading users:', error);
+            const userGrid = document.getElementById('userGrid');
+            userGrid.innerHTML = `
+                <div class="error-container" style="grid-column: 1/-1;">
+                    <h3>Connection Error</h3>
+                    <p>Unable to connect to the backend service. Please ensure your Spring Boot server is running on localhost:8080</p>
+                    <button onclick="loadUsers()" style="margin-top: 1rem; padding: 0.75rem 2rem; background: white; color: #ef4444; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">Retry Connection</button>
+                </div>
+            `;
+        }
+    }
+
+    // Enhanced user display
+    function displayUsers(users) {
+        const userGrid = document.getElementById('userGrid');
+
+        if (users.length === 0) {
+            userGrid.innerHTML = `
+                <div class="error-container" style="grid-column: 1/-1;">
+                    <h3>No Professionals Found</h3>
+                    <p>The database appears to be empty. Please add some user profiles to your backend.</p>
+                </div>
+            `;
+            return;
+        }
+
+        userGrid.innerHTML = users.map(user => `
+            <div class="user-card" data-user-id="${user.id}" role="button" tabindex="0">
+                <img src="${user.profileImageUrl || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=face'}"
+                     alt="${user.name || 'Professional'}" class="user-avatar" loading="lazy">
+                <div class="user-name">${user.name || 'Professional'}</div>
+                <div class="user-title">${user.title || 'Executive'}</div>
+                <div class="user-experience">${user.experienceYear ? user.experienceYear + '+ years experience' : 'Experienced Professional'}</div>
+            </div>
+        `).join('');
+    }
+
+    // Enhanced event listeners
+    function initializeEventListeners() {
+        // User selection with keyboard support
+        document.addEventListener('click', handleUserSelection);
+        document.addEventListener('keydown', handleKeyboardNavigation);
+
+        // Template selection
+        document.addEventListener('click', handleTemplateSelection);
+
+        // Continue button with loading state
+        const continueBtn = document.getElementById('continueBtn');
+        continueBtn.addEventListener('click', handleContinue);
+
+        // Back button
+        document.getElementById('backButton').addEventListener('click', goBack);
+    }
+
+    function handleUserSelection(e) {
+        const userCard = e.target.closest('.user-card');
+        if (!userCard) return;
+
+        const userId = userCard.dataset.userId;
+        selectUser(userId, userCard);
+    }
+
+    function handleTemplateSelection(e) {
+        const templateCard = e.target.closest('.template-card');
+        if (!templateCard) return;
+
+        const template = templateCard.dataset.template;
+        selectTemplate(template, templateCard);
+    }
+
+    function handleKeyboardNavigation(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            if (e.target.classList.contains('user-card')) {
+                e.preventDefault();
+                handleUserSelection(e);
+            } else if (e.target.classList.contains('template-card')) {
+                e.preventDefault();
+                handleTemplateSelection(e);
+            }
+        }
+    }
+
+    async function handleContinue() {
+        if (!selectedUser || !selectedTemplate) return;
+
+        const continueBtn = document.getElementById('continueBtn');
+        continueBtn.classList.add('loading');
+
+        try {
+            await loadPortfolio();
+            document.getElementById('selectionScreen').classList.add('hidden');
+            document.getElementById('portfolioContent').classList.remove('hidden');
+            document.getElementById('backButton').style.display = 'flex';
+
+            // Smooth transition
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } catch (error) {
+            console.error('Error loading portfolio:', error);
+            alert('Failed to load portfolio. Please try again.');
+        } finally {
+            continueBtn.classList.remove('loading');
+        }
+    }
+
+    // Enhanced user selection
+    async function selectUser(userId, cardElement) {
+        try {
+            // Update UI immediately
+            document.querySelectorAll('.user-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            cardElement.classList.add('selected');
+
+            // Fetch user data
+            const response = await fetch(`${API_BASE_URL}/id/${userId}`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch user data');
+            }
+            const users = await response.json();
+
+            if (users.length > 0) {
+                selectedUser = users[0];
+                updateContinueButton();
+
+                // Add success feedback
+                cardElement.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    cardElement.style.transform = '';
+                }, 200);
+            }
+        } catch (error) {
+            console.error('Error selecting user:', error);
+            cardElement.classList.remove('selected');
+            alert('Failed to load user data. Please try again.');
+        }
+    }
+
+    // Enhanced template selection
+    function selectTemplate(template, cardElement) {
+        document.querySelectorAll('.template-card').forEach(card => {
+            card.classList.remove('selected');
+        });
+        cardElement.classList.add('selected');
+
+        selectedTemplate = template;
+        updateContinueButton();
+
+        // Add success feedback
+        cardElement.style.transform = 'scale(1.02)';
+        setTimeout(() => {
+            cardElement.style.transform = '';
+        }, 200);
+    }
+
+    // Enhanced continue button updates
+    function updateContinueButton() {
+        const continueBtn = document.getElementById('continueBtn');
+        const btnText = continueBtn.querySelector('.btn-text');
+
+        if (selectedUser && selectedTemplate) {
+            continueBtn.classList.add('active');
+            btnText.textContent = `View ${selectedUser.name || 'Professional'}'s Portfolio`;
+        } else if (selectedUser) {
+            btnText.textContent = 'Select a Template';
+        } else if (selectedTemplate) {
+            btnText.textContent = 'Select a Professional';
+        } else {
+            btnText.textContent = 'Select Professional & Template';
+        }
+    }
+
+    // Enhanced portfolio loading with template routing
+    async function loadPortfolio() {
+        if (!selectedUser || !selectedTemplate) return;
+
+        const portfolioContent = document.getElementById('portfolioContent');
+
+        switch (selectedTemplate) {
+            case 'modern':
+                await loadModernTemplate(portfolioContent);
+                break;
+            case 'classic':
+                await loadClassicTemplate(portfolioContent);
+                break;
+            case 'executive':
+                await loadExecutiveTemplate(portfolioContent);
+                break;
+            default:
+                throw new Error('Unknown template');
+        }
+    }
+
+    // Modern Template Implementation
+    async function loadModernTemplate(container) {
+        container.className = 'template-modern';
+
+        container.innerHTML = `
+            <!-- Header -->
+            <header class="modern-header" id="modernHeader">
+                <div class="modern-header-content">
+                    <div class="modern-logo">${selectedUser.name?.split(' ')[0] || 'Portfolio'}</div>
+                    <nav class="modern-nav">
+                        <a class="modern-nav-link active" href="#hero">Home</a>
+                        <a class="modern-nav-link" href="#about">About</a>
+                        <a class="modern-nav-link" href="#portfolio">Portfolio</a>
+                        <a class="modern-nav-link" href="#contact">Contact</a>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="modern-hero" id="hero">
+                <div class="container">
+                    <div class="modern-hero-content">
+                        <img src="${selectedUser.profileImageUrl || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop&crop=face'}"
+                             alt="${selectedUser.name}" class="modern-profile-image" loading="lazy">
+                        <h1>${selectedUser.name || 'Professional Executive'}</h1>
+                        <div class="modern-hero-subtitle">${selectedUser.title || 'Senior Executive'}</div>
+                        <p class="modern-hero-description">${selectedUser.description || 'Leading innovation and driving results with strategic vision, exceptional leadership skills, and a commitment to organizational excellence.'}</p>
+                        <div class="modern-hero-actions">
+                            <a href="#portfolio" class="modern-btn modern-btn-primary">
+                                <span>View Portfolio</span>
+                                <span>→</span>
+                            </a>
+                            <a href="#contact" class="modern-btn modern-btn-secondary">
+                                <span>Get In Touch</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="section stats-section">
+                <div class="container">
+                    <div class="stats-grid">
+                        ${generateStatsContent()}
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="section" id="about">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">About Me</h2>
+                        <p class="section-subtitle">Professional excellence through strategic leadership and innovation</p>
+                    </div>
+                    <div class="about-grid">
+                        <div class="about-content">
+                            <h3 class="about-title">Executive Leadership</h3>
+                            <p class="about-text">${selectedUser.description || 'With extensive experience in executive leadership, I specialize in strategic planning, organizational development, and driving sustainable growth. My approach combines analytical thinking with creative problem-solving to deliver exceptional results for stakeholders and teams.'}</p>
+                            ${generateScheduleContent()}
+                            ${generateExpertiseContent()}
+                        </div>
+                        <div class="contact-card">
+                            <h3 class="contact-title">Contact Information</h3>
+                            ${generateContactContent()}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section class="section" id="portfolio">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Portfolio</h2>
+                        <p class="section-subtitle">Strategic initiatives and successful project outcomes</p>
+                    </div>
+                    <div class="portfolio-grid">
+                        ${generatePortfolioContent()}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer" id="contact">
+                <div class="container">
+                    <div class="footer-content">
+                        <h3 class="footer-logo">${selectedUser.name || 'Executive Portfolio'}</h3>
+                        <p class="footer-description">${generateFooterDescription()}</p>
+                        <div class="social-section">
+                            <h3 class="social-title">Professional Networks</h3>
+                            <div class="social-links">
+                                ${generateSocialLinks()}
+                            </div>
+                        </div>
+                        <div class="copyright">
+                            <p>&copy; 2025 ${selectedUser.name || 'Professional Executive'}. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        `;
+    }
+
+    // Classic Template Implementation
+    async function loadClassicTemplate(container) {
+        container.className = 'template-classic';
+
+        container.innerHTML = `
+            <!-- Header -->
+            <header class="classic-header">
+                <div class="classic-header-content">
+                    <div class="classic-logo">${selectedUser.name?.split(' ')[0] || 'Portfolio'}</div>
+                    <nav class="classic-nav">
+                        <a class="classic-nav-link active" href="#hero">Home</a>
+                        <a class="classic-nav-link" href="#about">About</a>
+                        <a class="classic-nav-link" href="#portfolio">Portfolio</a>
+                        <a class="classic-nav-link" href="#contact">Contact</a>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="classic-hero" id="hero">
+                <div class="classic-hero-content">
+                    <div>
+                        <h1>${selectedUser.name || 'Professional Executive'}</h1>
+                        <div class="classic-hero-subtitle">${selectedUser.title || 'Senior Executive'}</div>
+                        <p class="classic-hero-description">${selectedUser.description || 'Delivering exceptional results through strategic leadership, innovative thinking, and a commitment to organizational excellence and sustainable growth.'}</p>
+                        <div class="classic-hero-actions">
+                            <a href="#portfolio" class="classic-btn classic-btn-primary">
+                                <span>View Portfolio</span>
+                                <span>→</span>
+                            </a>
+                            <a href="#contact" class="classic-btn classic-btn-secondary">
+                                <span>Contact Me</span>
+                            </a>
+                        </div>
+                    </div>
+                    <div>
+                        <img src="${selectedUser.profileImageUrl || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&h=800&fit=crop&crop=face'}"
+                             alt="${selectedUser.name}" class="classic-profile-image" loading="lazy">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="section stats-section">
+                <div class="container">
+                    <div class="stats-grid">
+                        ${generateStatsContent()}
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="section" id="about" style="background: var(--gray-50);">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Professional Background</h2>
+                        <p class="section-subtitle">Experience, expertise, and commitment to excellence</p>
+                    </div>
+                    <div class="about-grid">
+                        <div class="about-content">
+                            <h3 class="about-title">Executive Excellence</h3>
+                            <p class="about-text">${selectedUser.description || 'With a proven track record in executive leadership, I bring strategic vision and operational excellence to every challenge. My experience spans multiple industries and functional areas, with a focus on driving sustainable growth and organizational transformation.'}</p>
+                            ${generateScheduleContent()}
+                            ${generateExpertiseContent()}
+                        </div>
+                        <div class="contact-card">
+                            <h3 class="contact-title">Get In Touch</h3>
+                            ${generateContactContent()}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section class="section" id="portfolio" style="background: white;">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Portfolio</h2>
+                        <p class="section-subtitle">Key projects and strategic achievements</p>
+                    </div>
+                    <div class="portfolio-grid">
+                        ${generatePortfolioContent()}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer" id="contact">
+                <div class="container">
+                    <div class="footer-content">
+                        <h3 class="footer-logo">${selectedUser.name || 'Executive Portfolio'}</h3>
+                        <p class="footer-description">${generateFooterDescription()}</p>
+                        <div class="social-section">
+                            <h3 class="social-title">Connect With Me</h3>
+                            <div class="social-links">
+                                ${generateSocialLinks()}
+                            </div>
+                        </div>
+                        <div class="copyright">
+                            <p>&copy; 2025 ${selectedUser.name || 'Professional Executive'}. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        `;
+    }
+
+    // Executive Template Implementation
+    async function loadExecutiveTemplate(container) {
+        container.className = 'template-executive';
+
+        container.innerHTML = `
+            <!-- Header -->
+            <header class="executive-header">
+                <div class="executive-header-content">
+                    <div class="executive-logo">${selectedUser.name?.split(' ')[0] || 'Executive'}</div>
+                    <nav class="executive-nav">
+                        <a class="executive-nav-link active" href="#hero">Home</a>
+                        <a class="executive-nav-link" href="#about">About</a>
+                        <a class="executive-nav-link" href="#portfolio">Portfolio</a>
+                        <a class="executive-nav-link" href="#contact">Contact</a>
+                    </nav>
+                </div>
+            </header>
+
+            <!-- Hero Section -->
+            <section class="modern-hero" id="hero" style="padding: 12rem 0 8rem;">
+                <div class="container">
+                    <div class="modern-hero-content">
+                        <img src="${selectedUser.profileImageUrl || 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=500&h=500&fit=crop&crop=face'}"
+                             alt="${selectedUser.name}" class="modern-profile-image" loading="lazy">
+                        <h1 style="color: white;">${selectedUser.name || 'Executive Leader'}</h1>
+                        <div class="modern-hero-subtitle" style="color: #fbbf24;">${selectedUser.title || 'Chief Executive Officer'}</div>
+                        <p class="modern-hero-description" style="color: rgba(255, 255, 255, 0.9);">${selectedUser.description || 'Driving organizational transformation and sustainable growth through visionary leadership, strategic innovation, and operational excellence at the highest executive level.'}</p>
+                        <div class="modern-hero-actions">
+                            <a href="#portfolio" class="modern-btn" style="background: linear-gradient(135deg, #fbbf24, #f59e0b); color: #1f2937;">
+                                <span>Executive Portfolio</span>
+                                <span>→</span>
+                            </a>
+                            <a href="#contact" class="modern-btn modern-btn-secondary">
+                                <span>Schedule Meeting</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="section stats-section">
+                <div class="container">
+                    <div class="stats-grid">
+                        ${generateStatsContent()}
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="section" id="about">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Executive Leadership</h2>
+                        <p class="section-subtitle">Strategic vision and operational excellence at the C-suite level</p>
+                    </div>
+                    <div class="about-grid">
+                        <div class="about-content">
+                            <h3 class="about-title">Visionary Leadership</h3>
+                            <p class="about-text">${selectedUser.description || 'As a senior executive, I specialize in organizational transformation, strategic planning, and driving sustainable growth. My leadership philosophy centers on empowering teams, fostering innovation, and delivering exceptional value to all stakeholders through data-driven decision making and strategic vision.'}</p>
+                            ${generateScheduleContent()}
+                            ${generateExpertiseContent()}
+                        </div>
+                        <div class="contact-card">
+                            <h3 class="contact-title">Executive Contact</h3>
+                            ${generateContactContent()}
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Portfolio Section -->
+            <section class="section" id="portfolio">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Strategic Portfolio</h2>
+                        <p class="section-subtitle">Transformational initiatives and executive achievements</p>
+                    </div>
+                    <div class="portfolio-grid">
+                        ${generatePortfolioContent()}
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer -->
+            <footer class="footer" id="contact">
+                <div class="container">
+                    <div class="footer-content">
+                        <h3 class="footer-logo">${selectedUser.name || 'Executive Portfolio'}</h3>
+                        <p class="footer-description">${generateFooterDescription()}</p>
+                        <div class="social-section">
+                            <h3 class="social-title">Executive Networks</h3>
+                            <div class="social-links">
+                                ${generateSocialLinks()}
+                            </div>
+                        </div>
+                        <div class="copyright">
+                            <p>&copy; 2025 ${selectedUser.name || 'Executive Leader'}. All rights reserved.</p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        `;
+    }
+
+    // Content Generation Functions
+    function generateStatsContent() {
+        const stats = [
+            {
+                icon: '📈',
+                number: `${selectedUser.experienceYear || '15'}+`,
+                label: 'Years Leadership'
+            },
+            {
+                icon: '🏆',
+                number: '250+',
+                label: 'Projects Led'
+            },
+            {
+                icon: '🎯',
+                number: '99%',
+                label: 'Success Rate'
+            },
+            {
+                icon: '👥',
+                number: '50+',
+                label: 'Team Members'
+            }
+        ];
+
+        return stats.map(stat => `
+            <div class="stat-item">
+                <div class="stat-icon">${stat.icon}</div>
+                <div class="stat-number">${stat.number}</div>
+                <div class="stat-label">${stat.label}</div>
+            </div>
+        `).join('');
+    }
+
+    function generateContactContent() {
+        const contacts = [];
+
+        if (selectedUser.email) {
+            contacts.push({
+                icon: '✉️',
+                label: 'Email',
+                value: selectedUser.email,
+                link: `mailto:${selectedUser.email}`
+            });
+        }
+
+        if (selectedUser.phone) {
+            contacts.push({
+                icon: '📞',
+                label: 'Phone',
+                value: selectedUser.phone,
+                link: `tel:${selectedUser.phone}`
+            });
+        }
+
+        if (selectedUser.location) {
+            contacts.push({
+                icon: '📍',
+                label: 'Location',
+                value: selectedUser.location
+            });
+        }
+
+        if (contacts.length === 0) {
+            return '<p style="opacity: 0.8;">Contact information available upon request</p>';
+        }
+
+        return contacts.map(contact => `
+            <div class="contact-item">
+                <div class="contact-icon">${contact.icon}</div>
+                <div class="contact-info">
+                    <h4>${contact.label}</h4>
+                    ${contact.link ?
+                        `<a href="${contact.link}"><p>${contact.value}</p></a>` :
+                        `<p>${contact.value}</p>`
+                    }
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function generateScheduleContent() {
+        if (!selectedUser.day && !selectedUser.openTime && !selectedUser.closeTime) {
+            return '';
+        }
+
+        let scheduleHtml = '<div style="margin-top: 3rem; padding: 2rem; border-radius: 16px; ';
+
+        if (selectedTemplate === 'modern' || selectedTemplate === 'executive') {
+            scheduleHtml += 'background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);">';
+        } else {
+            scheduleHtml += 'background: var(--gray-100); border: 1px solid var(--gray-200);">';
+        }
+
+        scheduleHtml += `<h4 style="font-size: 1.375rem; font-weight: 700; margin-bottom: 1.5rem; ${selectedTemplate === 'classic' ? 'color: var(--gray-900);' : 'color: white;'}">Availability</h4>`;
+
+        if (selectedUser.day) {
+            scheduleHtml += `<div style="display: flex; align-items: center; margin-bottom: 1rem; gap: 1rem;">
+                <div style="width: 40px; height: 40px; background: var(--primary-500); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">📅</div>
+                <div><strong style="${selectedTemplate === 'classic' ? 'color: var(--gray-900);' : 'color: white;'}">Days:</strong> <span style="${selectedTemplate === 'classic' ? 'color: var(--gray-700);' : 'color: rgba(255, 255, 255, 0.9);'}">${selectedUser.day}</span></div>
+            </div>`;
+        }
+
+        if (selectedUser.openTime && selectedUser.closeTime) {
+            scheduleHtml += `<div style="display: flex; align-items: center; gap: 1rem;">
+                <div style="width: 40px; height: 40px; background: var(--primary-500); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem;">⏰</div>
+                <div><strong style="${selectedTemplate === 'classic' ? 'color: var(--gray-900);' : 'color: white;'}">Hours:</strong> <span style="${selectedTemplate === 'classic' ? 'color: var(--gray-700);' : 'color: rgba(255, 255, 255, 0.9);'}">${formatTime(selectedUser.openTime)} - ${formatTime(selectedUser.closeTime)}</span></div>
+            </div>`;
+        }
+
+        scheduleHtml += '</div>';
+        return scheduleHtml;
+    }
+
+    function generateExpertiseContent() {
+        const expertiseAreas = [
+            'Strategic Planning',
+            'Leadership Development',
+            'Organizational Growth',
+            'Change Management',
+            'Team Building',
+            'Business Development'
+        ];
+
+        let expertiseHtml = '<div style="margin-top: 3rem;">';
+        expertiseHtml += `<h4 style="font-size: 1.375rem; font-weight: 700; margin-bottom: 1.5rem; ${selectedTemplate === 'classic' ? 'color: var(--gray-900);' : 'color: white;'}">Core Expertise</h4>`;
+        expertiseHtml += '<div style="display: flex; flex-wrap: wrap; gap: 1rem;">';
+
+        expertiseAreas.forEach(area => {
+            let tagStyle = '';
+            if (selectedTemplate === 'modern') {
+                tagStyle = 'background: rgba(255, 255, 255, 0.1); color: rgba(255, 255, 255, 0.9);';
+            } else if (selectedTemplate === 'executive') {
+                tagStyle = 'background: rgba(251, 191, 36, 0.1); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.2);';
+            } else {
+                tagStyle = 'background: var(--primary-50); color: var(--primary-700); border: 1px solid var(--primary-200);';
+            }
+
+            expertiseHtml += `<span style="padding: 0.75rem 1.5rem; border-radius: 25px; font-size: 0.9rem; font-weight: 600; ${tagStyle}">${area}</span>`;
+        });
+
+        expertiseHtml += '</div></div>';
+        return expertiseHtml;
+    }
+
+    function generatePortfolioContent() {
+        const portfolioItems = [];
+
+        if (selectedUser.image1Url && selectedUser.description1) {
+            portfolioItems.push({
+                image: selectedUser.image1Url,
+                title: selectedUser.serviceTitle || 'Strategic Initiative',
+                description: selectedUser.description1,
+                tags: ['Strategy', 'Leadership', 'Innovation']
+            });
+        }
+
+        if (selectedUser.image2Url && selectedUser.description2) {
+            portfolioItems.push({
+                image: selectedUser.image2Url,
+                title: 'Organizational Development',
+                description: selectedUser.description2,
+                tags: ['Management', 'Development', 'Growth']
+            });
+        }
+
+        if (selectedUser.image3Url && selectedUser.description3) {
+            portfolioItems.push({
+                image: selectedUser.image3Url,
+                title: 'Business Transformation',
+                description: selectedUser.description3,
+                tags: ['Transformation', 'Excellence', 'Results']
+            });
+        }
+
+        if (selectedUser.image4Url && selectedUser.description4) {
+            portfolioItems.push({
+                image: selectedUser.image4Url,
+                title: 'Executive Achievement',
+                description: selectedUser.description4,
+                tags: ['Achievement', 'Success', 'Impact']
+            });
+        }
+
+        if (portfolioItems.length === 0) {
+            return `
+                <div style="grid-column: 1/-1; text-align: center; padding: 4rem 2rem; opacity: 0.8;">
+                    <div style="font-size: 3rem; margin-bottom: 1rem;">📁</div>
+                    <h3 style="font-size: 1.5rem; font-weight: 600; margin-bottom: 0.5rem; ${selectedTemplate === 'classic' ? 'color: var(--gray-700);' : 'color: rgba(255, 255, 255, 0.9);'}">Portfolio Coming Soon</h3>
+                    <p style="${selectedTemplate === 'classic' ? 'color: var(--gray-500);' : 'color: rgba(255, 255, 255, 0.7);'}">Project showcase will be available shortly</p>
+                </div>
+            `;
+        }
+
+        return portfolioItems.map(item => `
+            <div class="portfolio-item">
+                <img src="${item.image}" alt="${item.title}" class="portfolio-image" loading="lazy">
+                <div class="portfolio-content">
+                    <h3 class="portfolio-title">${item.title}</h3>
+                    <p class="portfolio-description">${item.description}</p>
+                    <div class="portfolio-tags">
+                        ${item.tags.map(tag => `<span class="portfolio-tag">${tag}</span>`).join('')}
+                    </div>
+                </div>
+            </div>
+        `).join('');
+    }
+
+    function generateSocialLinks() {
+        const links = [];
+
+        if (selectedUser.linkedInUrl) {
+            links.push({ platform: 'LinkedIn', url: selectedUser.linkedInUrl, label: 'LI' });
+        }
+        if (selectedUser.twitterUrl) {
+            links.push({ platform: 'Twitter', url: selectedUser.twitterUrl, label: 'TW' });
+        }
+        if (selectedUser.faceBookUrl) {
+            links.push({ platform: 'Facebook', url: selectedUser.faceBookUrl, label: 'FB' });
+        }
+        if (selectedUser.instaUrl) {
+            links.push({ platform: 'Instagram', url: selectedUser.instaUrl, label: 'IG' });
+        }
+        if (selectedUser.dribbleUrl) {
+            links.push({ platform: 'Dribbble', url: selectedUser.dribbleUrl, label: 'DR' });
+        }
+        if (selectedUser.otherUrl) {
+            links.push({ platform: 'Website', url: selectedUser.otherUrl, label: 'WEB' });
+        }
+
+        if (links.length === 0) {
+            return '<p style="opacity: 0.7; font-size: 1rem;">Professional networks available upon request</p>';
+        }
+
+        return links.map(link => `
+            <a href="${link.url}" target="_blank" rel="noopener noreferrer" class="social-link" title="${link.platform}">
+                <span>${link.label}</span>
+            </a>
+        `).join('');
+    }
+
+    function generateFooterDescription() {
+        const parts = [];
+
+        if (selectedUser.title) parts.push(selectedUser.title);
+        if (selectedUser.location) parts.push(selectedUser.location);
+        if (selectedUser.experienceYear) parts.push(`${selectedUser.experienceYear}+ years of executive experience`);
+
+        return parts.length > 0
+            ? parts.join(' • ')
+            : 'Professional excellence through strategic leadership and innovative thinking';
+    }
+
+    // Enhanced scroll effects
+    function initializeScrollEffects() {
+        let ticking = false;
+
+        function updateScrollEffects() {
+            const scrollY = window.pageYOffset;
+            const header = document.querySelector('.modern-header, .classic-header, .executive-header');
+
+            if (header) {
+                if (scrollY > 100) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            }
+
+            // Parallax effects for modern template
+            if (selectedTemplate === 'modern' || selectedTemplate === 'executive') {
+                const heroImage = document.querySelector('.modern-profile-image');
+                if (heroImage) {
+                    const parallaxSpeed = scrollY * 0.2;
+                    heroImage.style.transform = `translateY(${parallaxSpeed}px) scale(${1 + scrollY * 0.0001})`;
+                }
+            }
+
+            ticking = false;
+        }
+
+        function requestTick() {
+            if (!ticking) {
+                requestAnimationFrame(updateScrollEffects);
+                ticking = true;
+            }
+        }
+
+        window.addEventListener('scroll', requestTick, { passive: true });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements after portfolio loads
+        setTimeout(() => {
+            const elementsToAnimate = document.querySelectorAll('.stat-item, .portfolio-item, .about-content, .contact-card');
+            elementsToAnimate.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+        }, 100);
+    }
+
+    // Enhanced navigation with smooth scrolling
+    function initializeNavigation() {
+        document.addEventListener('click', function(e) {
+            const navLink = e.target.closest('.modern-nav-link, .classic-nav-link, .executive-nav-link, .modern-btn, .classic-btn');
+            if (!navLink) return;
+
+            const href = navLink.getAttribute('href');
+            if (!href || !href.startsWith('#')) return;
+
+            e.preventDefault();
+
+            const targetId = href.substring(1);
+            const targetElement = document.getElementById(targetId);
+
+            if (targetElement) {
+                const headerHeight = document.querySelector('.modern-header, .classic-header, .executive-header')?.offsetHeight || 80;
+                const offsetTop = targetElement.offsetTop - headerHeight - 20;
+
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+
+                // Update active nav link
+                document.querySelectorAll('.modern-nav-link, .classic-nav-link, .executive-nav-link').forEach(link => {
+                    link.classList.remove('active');
+                });
+
+                const activeNavLink = document.querySelector(`[href="${href}"]`);
+                if (activeNavLink) {
+                    activeNavLink.classList.add('active');
+                }
+            }
+        });
+
+        // Enhanced scroll spy
+        const sections = ['hero', 'about', 'portfolio', 'contact'];
+        let currentSection = 'hero';
+
+        function updateActiveNavLink() {
+            const scrollY = window.pageYOffset + 150;
+
+            for (let i = sections.length - 1; i >= 0; i--) {
+                const section = document.getElementById(sections[i]);
+                if (section && scrollY >= section.offsetTop) {
+                    currentSection = sections[i];
+                    break;
+                }
+            }
+
+            document.querySelectorAll('.modern-nav-link, .classic-nav-link, .executive-nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+    }
+
+    // Utility functions
+    function formatTime(timeString) {
+        if (!timeString) return '';
+
+        try {
+            const [hours, minutes] = timeString.split(':');
+            const hour = parseInt(hours);
+            const min = parseInt(minutes) || 0;
+
+            const ampm = hour >= 12 ? 'PM' : 'AM';
+            const displayHour = hour % 12 || 12;
+
+            return `${displayHour}:${min.toString().padStart(2, '0')} ${ampm}`;
+        } catch (error) {
+            return timeString;
+        }
+    }
+
+    // Enhanced go back functionality
+    function goBack() {
+        // Smooth transition
+        document.getElementById('portfolioContent').style.opacity = '0';
+        document.getElementById('portfolioContent').style.transform = 'translateY(20px)';
+
+        setTimeout(() => {
+            document.getElementById('selectionScreen').classList.remove('hidden');
+            document.getElementById('portfolioContent').classList.add('hidden');
+            document.getElementById('backButton').style.display = 'none';
+
+            // Reset selections
+            selectedUser = null;
+            selectedTemplate = null;
+
+            document.querySelectorAll('.user-card, .template-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+
+            updateContinueButton();
+
+            // Reset portfolio content styles
+            document.getElementById('portfolioContent').style.opacity = '';
+            document.getElementById('portfolioContent').style.transform = '';
+
+            // Smooth scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }, 300);
+    }
+
+    // Performance optimizations
+    function optimizeImages() {
+        // Lazy loading for images
+        const images = document.querySelectorAll('img[loading="lazy"]');
+
+        if ('IntersectionObserver' in window) {
+            const imageObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        img.src = img.src; // Trigger actual loading
+                        imageObserver.unobserve(img);
+                    }
+                });
+            });
+
+            images.forEach(img => imageObserver.observe(img));
+        }
+    }
+
+    // Error handling and retry mechanisms
+    function handleApiError(error, retryFunction) {
+        console.error('API Error:', error);
+
+        // Show user-friendly error message
+        const errorMessage = document.createElement('div');
+        errorMessage.className = 'error-container';
+        errorMessage.innerHTML = `
+            <h3>Connection Issue</h3>
+            <p>Unable to connect to the server. Please check your connection and try again.</p>
+            <button onclick="${retryFunction.name}()" style="margin-top: 1rem; padding: 0.75rem 2rem; background: white; color: #ef4444; border: none; border-radius: 8px; font-weight: 600; cursor: pointer;">
+                Retry Connection
+            </button>
+        `;
+
+        return errorMessage.outerHTML;
+    }
+
+    // Initialize everything when portfolio loads
+    function initializePortfolio() {
+        initializeNavigation();
+        initializeScrollEffects();
+        optimizeImages();
+
+        // Add fade-in animation
+        const portfolioContent = document.getElementById('portfolioContent');
+        portfolioContent.style.opacity = '0';
+        portfolioContent.style.transform = 'translateY(20px)';
+        portfolioContent.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+
+        setTimeout(() => {
+            portfolioContent.style.opacity = '1';
+            portfolioContent.style.transform = 'translateY(0)';
+        }, 100);
+    }
+
+    // Override the loadPortfolio function to include initialization
+    const originalLoadPortfolio = loadPortfolio;
+    loadPortfolio = async function() {
+        await originalLoadPortfolio();
+        initializePortfolio();
+    };
+
+    // Keyboard accessibility
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            if (!document.getElementById('portfolioContent').classList.contains('hidden')) {
+                goBack();
+            }
+        }
+    });
+
+    // Print styles optimization
+    window.addEventListener('beforeprint', function() {
+        document.body.classList.add('printing');
+    });
+
+    window.addEventListener('afterprint', function() {
+        document.body.classList.remove('printing');
+    });
+
+    // Add print styles
+    const printStyles = `
+        @media print {
+            .back-button,
+            .modern-nav,
+            .classic-nav,
+            .executive-nav,
+            .modern-hero-actions,
+            .classic-hero-actions {
+                display: none !important;
+            }
+
+            .modern-header,
+            .classic-header,
+            .executive-header {
+                position: relative !important;
+                box-shadow: none !important;
+            }
+
+            .section {
+                break-inside: avoid;
+                padding: 2rem 0 !important;
+            }
+
+            .portfolio-item,
+            .stat-item {
+                break-inside: avoid;
+            }
+        }
+    `;
+
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = printStyles;
+    document.head.appendChild(styleSheet);
+
+    // Service Worker for caching (if needed)
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+            // Uncomment if you want to add service worker caching
+            // navigator.serviceWorker.register('/sw.js');
+        });
+    }
+
+    // Analytics placeholder (replace with actual analytics)
+    function trackPortfolioView(userId, template) {
+        // console.log('Portfolio viewed:', { userId, template });
+        // Add your analytics tracking here
+    }
+
+    // Update the continue handler to include tracking
+    const originalHandleContinue = handleContinue;
+    handleContinue = async function() {
+        await originalHandleContinue();
+        if (selectedUser && selectedTemplate) {
+            trackPortfolioView(selectedUser.id, selectedTemplate);
+        }
+    };
+</script>
+</body>
+</html>
