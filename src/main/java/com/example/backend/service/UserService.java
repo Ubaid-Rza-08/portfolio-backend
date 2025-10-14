@@ -57,22 +57,6 @@ public class UserService {
         return userRepository.findByTitleContainingIgnoreCase(title);
     }
 
-    // Find user by email - returns list for consistency
-    public List<User> findByEmail(String email) {
-        Optional<User> user = userRepository.findByEmail(email);
-        return user.map(Arrays::asList).orElse(Collections.emptyList());
-    }
-
-    // Find users by location
-    public List<User> findByLocation(String location) {
-        return userRepository.findByLocation(location);
-    }
-
-    // Find users by experience year range
-    public List<User> findByExperienceYearBetween(Integer minExp, Integer maxExp) {
-        return userRepository.findByExperienceYearBetween(minExp, maxExp);
-    }
-
     // Helper methods for backward compatibility (used by controller for updates/deletes)
     public Optional<User> findByIdOptional(UUID id) {
         return userRepository.findById(id);
@@ -86,10 +70,6 @@ public class UserService {
         return userRepository.findByTitleIgnoreCase(title);
     }
 
-    public Optional<User> findByEmailOptional(String email) {
-        return userRepository.findByEmail(email);
-    }
-
     // Delete user by ID
     public boolean deleteUser(UUID id) {
         if (userRepository.existsById(id)) {
@@ -99,50 +79,19 @@ public class UserService {
         return false;
     }
 
-    // Update user (with Cloudinary URLs)
+    // Update user - only with available fields
     public User updateUser(UUID id, User userDetails) {
         return userRepository.findById(id)
                 .map(user -> {
-                    user.setName(userDetails.getName());
-                    user.setTitle(userDetails.getTitle());
-                    user.setDescription(userDetails.getDescription());
-                    user.setLocation(userDetails.getLocation());
-                    user.setExperienceYear(userDetails.getExperienceYear());
-                    user.setEmail(userDetails.getEmail());
-                    user.setPhone(userDetails.getPhone());
-                    user.setFaceBookUrl(userDetails.getFaceBookUrl());
-                    user.setLinkedInUrl(userDetails.getLinkedInUrl());
-                    user.setTwitterUrl(userDetails.getTwitterUrl());
-                    user.setInstaUrl(userDetails.getInstaUrl());
-                    user.setDribbleUrl(userDetails.getDribbleUrl());
-                    user.setOtherUrl(userDetails.getOtherUrl());
-                    user.setDay(userDetails.getDay());
-                    user.setOpenTime(userDetails.getOpenTime());
-                    user.setCloseTime(userDetails.getCloseTime());
-                    user.setServiceTitle(userDetails.getServiceTitle());
-                    user.setServiceDescription(userDetails.getServiceDescription());
-                    user.setDescription1(userDetails.getDescription1());
-                    user.setDescription2(userDetails.getDescription2());
-                    user.setDescription3(userDetails.getDescription3());
-                    user.setDescription4(userDetails.getDescription4());
-
-                    // Update image URLs if provided (not null or empty)
-                    if (userDetails.getProfileImageUrl() != null && !userDetails.getProfileImageUrl().isEmpty()) {
-                        user.setProfileImageUrl(userDetails.getProfileImageUrl());
+                    if (userDetails.getName() != null) {
+                        user.setName(userDetails.getName());
                     }
-                    if (userDetails.getImage1Url() != null && !userDetails.getImage1Url().isEmpty()) {
-                        user.setImage1Url(userDetails.getImage1Url());
+                    if (userDetails.getTitle() != null) {
+                        user.setTitle(userDetails.getTitle());
                     }
-                    if (userDetails.getImage2Url() != null && !userDetails.getImage2Url().isEmpty()) {
-                        user.setImage2Url(userDetails.getImage2Url());
+                    if (userDetails.getDescription() != null) {
+                        user.setDescription(userDetails.getDescription());
                     }
-                    if (userDetails.getImage3Url() != null && !userDetails.getImage3Url().isEmpty()) {
-                        user.setImage3Url(userDetails.getImage3Url());
-                    }
-                    if (userDetails.getImage4Url() != null && !userDetails.getImage4Url().isEmpty()) {
-                        user.setImage4Url(userDetails.getImage4Url());
-                    }
-
                     return userRepository.save(user);
                 })
                 .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
